@@ -12,8 +12,11 @@ import org.havi.ui.event.*;
  * @author student
  */
 
-public class HelloTVXlet implements Xlet, HActionListener, UserEventListener {
+public class HelloTVXlet implements Xlet, HActionListener {
+    private HStaticText title, question;
     private HTextButton btn1,btn2,btn3,btn4;
+    private int count = 1;
+    private int score = 0;
     
     //default constructor without arguments
     public HelloTVXlet() {
@@ -22,7 +25,30 @@ public class HelloTVXlet implements Xlet, HActionListener, UserEventListener {
     //for HActionListener
     public void actionPerformed ( ActionEvent e )
     {
-        System.out.println(e.getActionCommand());
+        int choice = Integer.parseInt(e.getActionCommand());
+        
+        switch (choice) {
+            case 1:
+                System.out.println("choice: 1");
+                break;
+            case 2:
+                System.out.println("choice: 2");
+                break;
+            case 3:
+                System.out.println("choice: 3");
+                break;
+            case 4:
+                System.out.println("choice: 4");
+                if (count == 1) {
+                    score = score + 1;
+                }
+                break;
+        }
+
+        System.out.println("count before: " + count);
+        count = count + 1;
+        System.out.println("count now: " + count);
+        System.out.println("YOUR SCORE SO FAR: " + score);
     }
 
     //initialization
@@ -31,39 +57,39 @@ public class HelloTVXlet implements Xlet, HActionListener, UserEventListener {
         // SCHERM = 720 x 576
         
         //text
-        HStaticText title=new HStaticText("Harry Potter Quiz",0,0,720,76); // tekst,x,y,w,h
+        title=new HStaticText("Harry Potter Quiz",0,0,720,76); // tekst,x,y,w,h
         title.setBackgroundMode(HVisible.BACKGROUND_FILL);
         title.setBackground(Color.BLACK);
         scene.add(title);
         
-        HStaticText question=new HStaticText("VRAAG 1:",0,76,720,300); // tekst,x,y,w,h
+        question=new HStaticText("1: What's the title of the first book? Harry Potter and...",0,76,720,300); // tekst,x,y,w,h
         question.setBackgroundMode(HVisible.BACKGROUND_FILL);
         question.setBackground(Color.BLACK);
         scene.add(question);
         
         //buttons
-        btn1 = new HTextButton("KNOP1");
+        btn1 = new HTextButton("The Chamber of Secrets");
         btn1.setLocation(0,376);
         btn1.setSize (360,100);
         btn1.setBackground(Color.WHITE);
         btn1.setBackgroundMode(HVisible.BACKGROUND_FILL);
         btn1.setForeground(Color.BLACK);
         
-        btn2 = new HTextButton("KNOP2");
+        btn2 = new HTextButton("Voldemort");
         btn2.setLocation(360,376);
         btn2.setSize (360,100);
         btn2.setBackground(Color.WHITE);
         btn2.setBackgroundMode(HVisible.BACKGROUND_FILL);
         btn2.setForeground(Color.BLACK);
         
-        btn3 = new HTextButton("KNOP3");
+        btn3 = new HTextButton("The Order of the Phoenix");
         btn3.setLocation(0,476);
         btn3.setSize (360,100);
         btn3.setBackground(Color.WHITE);
         btn3.setBackgroundMode(HVisible.BACKGROUND_FILL);
         btn3.setForeground(Color.BLACK);
         
-        btn4 = new HTextButton("KNOP4");
+        btn4 = new HTextButton("The Philosopher's Stone");
         btn4.setLocation(360,476);
         btn4.setSize (360,100);
         btn4.setBackground(Color.WHITE);
@@ -84,8 +110,18 @@ public class HelloTVXlet implements Xlet, HActionListener, UserEventListener {
         
         btn1.requestFocus();
         
-        btn1.setActionCommand("btn1_pressed");
+        //btn press action
+        btn1.setActionCommand("1");
         btn1.addHActionListener(this);
+        
+        btn2.setActionCommand("2");
+        btn2.addHActionListener(this);
+        
+        btn3.setActionCommand("3");
+        btn3.addHActionListener(this);
+        
+        btn4.setActionCommand("4");
+        btn4.addHActionListener(this);
         
         scene.validate();
         scene.setVisible(true);
@@ -117,28 +153,6 @@ public class HelloTVXlet implements Xlet, HActionListener, UserEventListener {
     //destroy xlet
     public void destroyXlet(boolean unconditional) throws XletStateChangeException {
 
-    }
-    
-    // --------------------------------------------------
-    
-    // Key Events Handler
-    public void userEventReceived(org.dvb.event.UserEvent e) {
-        //IF USER HITS ENTER
-        if(e.getType() == KeyEvent.KEY_PRESSED){
-            switch(e.getCode()) {
-                case HRcEvent.VK_RIGHT:
-                    System.out.println("RIGHT");
-                    break;
-                    
-                case HRcEvent.VK_LEFT:
-                    System.out.println("LEFT");
-                    break;
-                    
-                case HRcEvent.VK_ENTER:
-                    System.out.println("ENTER");
-                    break;
-            }
-        }
     }
 }
 
