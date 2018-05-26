@@ -30,12 +30,21 @@ public class HelloTVXlet implements Xlet, HActionListener {
         switch (choice) {
             case 1:
                 System.out.println("choice: 1");
+                if (count == 4) {
+                    score = score + 1;
+                }
                 break;
             case 2:
                 System.out.println("choice: 2");
+                if (count == 3) {
+                    score = score + 1;
+                }
                 break;
             case 3:
                 System.out.println("choice: 3");
+                if (count == 2 || count == 5) {
+                    score = score + 1;
+                }
                 break;
             case 4:
                 System.out.println("choice: 4");
@@ -45,10 +54,42 @@ public class HelloTVXlet implements Xlet, HActionListener {
                 break;
         }
 
-        System.out.println("count before: " + count);
-        count = count + 1;
-        System.out.println("count now: " + count);
+        System.out.println("count: " + count);
         System.out.println("YOUR SCORE SO FAR: " + score);
+        count = count + 1;
+        
+        //QUESTIONS
+        if(count == 2) {
+            question.setTextContent("2: What does the name Voldemort mean?", HState.NORMAL_STATE);
+            btn1.setTextContent("Bad Guy", HState.NORMAL_STATE);
+            btn2.setTextContent("Death Maker", HState.NORMAL_STATE);
+            btn3.setTextContent("Flight of Death", HState.NORMAL_STATE);
+            btn4.setTextContent("Evil McDevilMan", HState.NORMAL_STATE);
+        }
+        
+        if(count == 3) {
+            question.setTextContent("3: At the end of the series, Harry falls in love with...", HState.NORMAL_STATE);
+            btn1.setTextContent("Hermione Granger", HState.NORMAL_STATE);
+            btn2.setTextContent("Ginny Weasley", HState.NORMAL_STATE);
+            btn3.setTextContent("Draco Malfoy", HState.NORMAL_STATE);
+            btn4.setTextContent("Cho Chang", HState.NORMAL_STATE);
+        }
+        
+        if(count == 4) {
+            question.setTextContent("4: Which one of these does Hermione NOT do?", HState.NORMAL_STATE);
+            btn1.setTextContent("Join the Quidditch team", HState.NORMAL_STATE);
+            btn2.setTextContent("Punch Draco in the face", HState.NORMAL_STATE);
+            btn3.setTextContent("Secretly brew a dangerous potion", HState.NORMAL_STATE);
+            btn4.setTextContent("Set a teacher on fire", HState.NORMAL_STATE);
+        }
+        
+        if(count == 5) {
+            question.setTextContent("5: The House of the Bravest is said to be...", HState.NORMAL_STATE);
+            btn1.setTextContent("Slytherin", HState.NORMAL_STATE);
+            btn2.setTextContent("Hufflepuff", HState.NORMAL_STATE);
+            btn3.setTextContent("Gryffindor", HState.NORMAL_STATE);
+            btn4.setTextContent("Ravenclaw", HState.NORMAL_STATE);
+        }
     }
 
     //initialization
