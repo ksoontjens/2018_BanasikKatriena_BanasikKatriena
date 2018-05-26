@@ -90,6 +90,31 @@ public class HelloTVXlet implements Xlet, HActionListener {
             btn3.setTextContent("Gryffindor", HState.NORMAL_STATE);
             btn4.setTextContent("Ravenclaw", HState.NORMAL_STATE);
         }
+        
+        if(count == 6) {
+            String newline = System.getProperty("line.separator");
+            
+            if(score < 2) {
+                question.setTextContent("Oops, your score is: " + score + "/5" + newline + "Maybe it's time to (re)watch Harry Potter", HState.NORMAL_STATE);
+            }
+            if (score > 1 && score < 4) {
+                question.setTextContent("Congratulations, your score is: " + score + "/5" + newline + "That's pretty good!", HState.NORMAL_STATE);
+            }
+            if (score > 3) {
+                question.setTextContent("Congratulations, your score is: " + score + "/5" + newline + "Impressive!", HState.NORMAL_STATE);
+            }
+            
+            
+            question.setSize(720,500);
+            btn1.setTextContent("", HState.NORMAL_STATE);
+            btn1.setSize(0,0);
+            btn2.setTextContent("", HState.NORMAL_STATE);
+            btn2.setSize(0,0);
+            btn3.setTextContent("", HState.NORMAL_STATE);
+            btn3.setSize(0,0);
+            btn4.setTextContent("", HState.NORMAL_STATE);
+            btn4.setSize(0,0);
+        }
     }
 
     //initialization
@@ -111,28 +136,28 @@ public class HelloTVXlet implements Xlet, HActionListener {
         //buttons
         btn1 = new HTextButton("The Chamber of Secrets");
         btn1.setLocation(0,376);
-        btn1.setSize (360,100);
+        btn1.setSize(360,100);
         btn1.setBackground(Color.WHITE);
         btn1.setBackgroundMode(HVisible.BACKGROUND_FILL);
         btn1.setForeground(Color.BLACK);
         
         btn2 = new HTextButton("Voldemort");
         btn2.setLocation(360,376);
-        btn2.setSize (360,100);
+        btn2.setSize(360,100);
         btn2.setBackground(Color.WHITE);
         btn2.setBackgroundMode(HVisible.BACKGROUND_FILL);
         btn2.setForeground(Color.BLACK);
         
         btn3 = new HTextButton("The Order of the Phoenix");
         btn3.setLocation(0,476);
-        btn3.setSize (360,100);
+        btn3.setSize(360,100);
         btn3.setBackground(Color.WHITE);
         btn3.setBackgroundMode(HVisible.BACKGROUND_FILL);
         btn3.setForeground(Color.BLACK);
         
         btn4 = new HTextButton("The Philosopher's Stone");
         btn4.setLocation(360,476);
-        btn4.setSize (360,100);
+        btn4.setSize(360,100);
         btn4.setBackground(Color.WHITE);
         btn4.setBackgroundMode(HVisible.BACKGROUND_FILL);
         btn4.setForeground(Color.BLACK);
